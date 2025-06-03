@@ -108,7 +108,12 @@ base_documents = [
 web_url = "https://intergriai.co.site/"
 web_text = scrape_website_text(web_url)
 web_doc = Document(page_content=web_text, metadata={"source": web_url})
-documents = base_documents + [web_doc]
+
+web_url1 = "https://aicoderr.vercel.app/"
+web_text1 = scrape_website_text(web_url1)
+web_doc1 = Document(page_content=web_text, metadata={"source": web_url})
+
+documents = base_documents + [web_doc] 
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/text-embedding-004",
     google_api_key=st.secrets["GOOGLE_API_KEY"]
