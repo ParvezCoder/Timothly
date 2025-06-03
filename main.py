@@ -5,10 +5,11 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.embeddings import GoogleGenerativeAIEmbeddings
-from langchain_community.chat_models import ChatGoogleGenerativeAI
-from langchain_community.vectorstores import FAISS
-
+# Corrected import for Embeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+# Corrected import for Chat Model
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_community.vectorstores import FAISS # This one usually stays as is
 # Load environment variables
 load_dotenv()
 
