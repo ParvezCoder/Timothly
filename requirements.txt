@@ -3,4 +3,5 @@ langchain
 openai
 chromadb
 beautifulsoup4
+bs4
 python-dotenv
