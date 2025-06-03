@@ -5,5 +5,5 @@ chromadb
 beautifulsoup4
 bs4
 python-dotenv
-langchain-google-genai
 google-generativeai
+git+https://github.com/langchain-ai/langchain-google-genai.git
