@@ -7,16 +7,12 @@ from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
-
 # Load environment variables (for local dev, optional)
 load_dotenv()
-
 # Set Streamlit Secrets (required for Streamlit Cloud)
 os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
-
 # Streamlit Page Configuration
 st.set_page_config(page_title="AI Project for Timothly", page_icon="🤖", layout="centered")
-
 # Custom Dark Theme CSS
 custom_css = """
 <style>
@@ -75,6 +71,14 @@ base_documents = [
                 """, metadata={"source": "https://intergriai.co.site/"}),
 
     Document(page_content="Goldfish are popular pets", metadata={"source": "jang"}),
+    Document(page_content="""
+            Elon Musk is a visionary entrepreneur, inventor, and engineer known for
+              founding and leading several groundbreaking companies, including Tesla, 
+             SpaceX, Neuralink, and The Boring Company. Born in South Africa in 1971, 
+             he moved to the U.S. to pursue his ambitions in technology and space exploration.
+              Musk is widely recognized for his bold goals, such as colonizing Mars, 
+             accelerating the world’s transition to sustainable energy, and integrating
+              AI with the human brain""", metadata={"source": "wwwhttps://x.com/"}),
 
     Document(page_content="""
                 Name = Engr. Parvez Ahmed
@@ -88,6 +92,7 @@ base_documents = [
                 • Website: https://aicoderr.vercel.app
                 • LinkedIn: linkedin.com/in/parvez-ahmed-1604b92b5
                 • GitHub: github.com/ParvezCoder
+                • Monthly earning: = $15,000
                 EDUCATION:
                 • B.E in Computer System Engineering, QUEST
                 EXPERIENCE:
@@ -104,22 +109,15 @@ web_url = "https://intergriai.co.site/"
 web_text = scrape_website_text(web_url)
 web_doc = Document(page_content=web_text, metadata={"source": web_url})
 documents = base_documents + [web_doc]
-
-# Embedding + FAISS Vector Store
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/text-embedding-004",
     google_api_key=st.secrets["GOOGLE_API_KEY"]
 )
-
 vectorstore = FAISS.from_documents(documents, embedding=embeddings)
-
-# LLM
 llm = ChatGoogleGenerativeAI(
     model="gemini-1.5-flash",
     api_key=st.secrets["GOOGLE_API_KEY"]
 )
-
-# Prompts
 rag_prompt = ChatPromptTemplate.from_messages([
     ("human", "Answer this question using only the provided content:\n\nQuestion: {question}\n\nContent:\n{content}")
 ])
