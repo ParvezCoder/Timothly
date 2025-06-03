@@ -1,9 +1,10 @@
 streamlit
 langchain
+langchain-community  # <--- Add this line
 openai
 chromadb
 beautifulsoup4
 bs4
 python-dotenv
 langchain-google-genai
-faiss-cpu  # <--- Add this line
+faiss-cpu
