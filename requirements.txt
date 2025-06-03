@@ -1,6 +1,6 @@
 streamlit
 langchain
-langchain-community  # <--- Add this line
+langchain-community
 openai
 chromadb
 beautifulsoup4
