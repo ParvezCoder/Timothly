@@ -5,7 +5,8 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
+from langchain_community.embeddings import GoogleGenerativeAIEmbeddings
+from langchain_community.chat_models import ChatGoogleGenerativeAI
 
 from langchain_community.vectorstores import FAISS
 
