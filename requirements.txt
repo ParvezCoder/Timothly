@@ -5,3 +5,4 @@ chromadb
 beautifulsoup4
 bs4
 python-dotenv
+langchain-google-genai
