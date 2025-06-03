@@ -7,7 +7,6 @@ from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.embeddings import GoogleGenerativeAIEmbeddings
 from langchain_community.chat_models import ChatGoogleGenerativeAI
-
 from langchain_community.vectorstores import FAISS
 
 # Load environment variables
